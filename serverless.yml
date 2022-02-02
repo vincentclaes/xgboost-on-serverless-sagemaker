@@ -28,7 +28,6 @@ resources:
       Properties:
         ProductionVariants:
           - ModelName: sagemaker-xgboost-2022-02-02-16-17-45-296
-            InitialInstanceCount: 1
             InitialVariantWeight: 1.0
             VariantName: SageMakerModel
             ServerlessConfig:
