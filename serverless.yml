@@ -1,0 +1,42 @@
+service: huggingface-on-serverless-sagemaker
+
+provider:
+  name: aws
+  region: eu-west-1 
+  runtime: python3.8
+  iam:
+    role:
+      managedPolicies: arn:aws:iam::aws:policy/AdministratorAccess
+
+
+functions:
+  huggingface:
+    handler: lambda_handler.handler
+    timeout: 120
+    memorySize: 128 
+    events:
+      - http:
+          path: prediction
+          method: post
+    environment:
+      SAGEMAKER_ENDPOINT_NAME: !GetAtt SageMakerEndpoint.EndpointName
+
+resources:
+  Resources:
+    SageMakerEndpointConfig:
+      Type: AWS::SageMaker::EndpointConfig
+      Properties:
+        ProductionVariants:
+          - ModelName: sagemaker-xgboost-2022-02-02-16-17-45-296
+            InitialInstanceCount: 1
+            InitialVariantWeight: 1.0
+            VariantName: SageMakerModel
+            ServerlessConfig:
+              MaxConcurrency: 1
+              MemorySizeInMB: 4096
+
+    SageMakerEndpoint:
+      Type: AWS::SageMaker::Endpoint
+      Properties:
+        EndpointConfigName: !GetAtt SageMakerEndpointConfig.EndpointConfigName
+        EndpointName: huggingface-serverless-sagemaker-endpoint
