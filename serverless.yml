@@ -31,7 +31,7 @@ resources:
             InitialVariantWeight: 1.0
             VariantName: SageMakerModel
             ServerlessConfig:
-              MaxConcurrency: 1000
+              MaxConcurrency: 50
               MemorySizeInMB: 4096
 
     SageMakerEndpoint:
