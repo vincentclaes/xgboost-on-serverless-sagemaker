@@ -7,8 +7,9 @@ sagemaker_endpoint_name = os.environ["SAGEMAKER_ENDPOINT_NAME"]
 
 def handler(event, context):
     
-    data = event["body"]["data"]
-    content_type = event["body"]["content_type"]
+    body = json.loads(event["body"])
+    data = body["data"]
+    content_type = body["content_type"]
     
     print(f"making a prediction on the data: {data}")
     

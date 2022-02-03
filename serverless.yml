@@ -27,7 +27,7 @@ resources:
       Type: AWS::SageMaker::EndpointConfig
       Properties:
         ProductionVariants:
-          - ModelName: sagemaker-xgboost-2022-02-02-16-17-45-296
+          - ModelName: sagemaker-xgboost-2022-02-03-20-32-22-260
             InitialVariantWeight: 1.0
             VariantName: SageMakerModel
             ServerlessConfig:
