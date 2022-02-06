@@ -7,7 +7,8 @@ Follow the steps in the (sagemaker) notebook [xgboost-on-serverless-sagemaker.ip
 - Create a serverless.yml file to deploy our Serverless Sagemaker + Lambda + Api Gateway
 - Deploy our stack to AWS
 - Call our model using curl
+- Remove the stack
 
 We first tried doing it with a huggingface model, but serverless sagemaker did not work with huggingface at the time of writing.
-The repo for "huggingface-on-serverless-sagemaker" can ge found [here](https://github.com/vincentclaes/huggingface-on-serverless-sagemaker)
+The repo for "huggingface-on-serverless-sagemaker" can be found [here](https://github.com/vincentclaes/huggingface-on-serverless-sagemaker)
 
